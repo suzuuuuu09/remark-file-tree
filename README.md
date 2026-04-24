@@ -5,14 +5,14 @@ A Remark plugin that transforms `tree` code blocks into icon-enhanced file tree 
 ## Installation
 
 ```bash
-pnpm add @suzu09/remark-file-tree
+pnpm add @suzuuuuu09/remark-file-tree
 ```
 
 ## Usage
 
 ```ts
 import { unified } from "unified";
-import remarkFileTree from "@suzu09/remark-file-tree";
+import remarkFileTree from "@suzuuuuu09/remark-file-tree";
 
 const processor = unified().use(remarkFileTree, {
 	iconThemeMode: "theme",
