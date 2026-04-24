@@ -77,3 +77,21 @@ test("escapes file and comment text in rendered HTML", () => {
 		/comment &lt;unsafe&gt; &amp; &quot;quoted&quot;/,
 	);
 });
+
+test("keeps nested directories under their parent depth", () => {
+	const tree = createTree(`src/
+├── typst/
+│   └── main.typ
+└── java/
+    └── Main.java`);
+	const transformedNode = transformAndReadHtml(remarkFileTree(), tree);
+
+	assert.match(
+		transformedNode.value,
+		/typst\/[\s\S]*?data-depth="2" style="--tree-depth:2;"[\s\S]*?main\.typ/,
+	);
+	assert.match(
+		transformedNode.value,
+		/java\/[\s\S]*?data-depth="2" style="--tree-depth:2;"[\s\S]*?Main\.java/,
+	);
+});

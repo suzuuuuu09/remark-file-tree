@@ -67,6 +67,13 @@ const getIconNerdFont = (
 	return `<span class="tree-icon remark-file-tree__icon-glyph" style="--tree-icon-light:${colors.lightColor};--tree-icon-dark:${colors.darkColor};">${icon.text}</span>`;
 };
 
+const getTreeDepth = (prefix: string): number => {
+	const normalizedPrefix = prefix.replace(/\t/g, "    ");
+	const ancestorDepth = normalizedPrefix.match(/(?:│ {3}| {4})/g)?.length ?? 0;
+	const currentBranchDepth = /[├└]/.test(normalizedPrefix) ? 1 : 0;
+	return ancestorDepth + currentBranchDepth;
+};
+
 const remarkFileTree: Plugin<[RemarkFileTreeOptions?], Root> = (
 	options = {},
 ) => {
@@ -84,14 +91,7 @@ const remarkFileTree: Plugin<[RemarkFileTreeOptions?], Root> = (
 				.map((line, i) => {
 					const match = new RegExp(/^([│\s├└─\t]+)/).exec(line);
 					const prefix = match ? match[0] : "";
-
-					const normalizedPrefix = prefix
-						.replace(/\t/g, "  ")
-						.replace(/──/g, "  ")
-						.replace(/[│├└]/g, " ");
-
-					const rawDepth = Math.floor(normalizedPrefix.length / 2);
-					const depth = Math.floor(rawDepth / 2);
+					const depth = getTreeDepth(prefix);
 					const contentPart = line.replace(/^[│\s├└─\t]+/, "");
 					const [namePart, ...commentParts] = contentPart.split("#");
 					const comment = commentParts.join("#").trim();
