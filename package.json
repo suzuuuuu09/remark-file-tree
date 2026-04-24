@@ -1,6 +1,6 @@
 {
-	"name": "@suzuuuuu09/remark-file-tree",
-	"version": "0.1.2",
+	"name": "remark-file-tree",
+	"version": "0.1.1",
 	"description": "A remark plugin to render file tree code blocks as styled HTML",
 	"type": "module",
 	"main": "./dist/index.cjs",

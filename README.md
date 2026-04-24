@@ -1,18 +1,18 @@
-# @suzuuuuu09/remark-file-tree
+# remark-file-tree
 
 A Remark plugin that transforms `tree` code blocks into icon-enhanced file tree HTML.
 
 ## Installation
 
 ```bash
-pnpm add @suzuuuuu09/remark-file-tree
+pnpm add remark-file-tree
 ```
 
 ## Usage
 
 ```ts
 import { unified } from "unified";
-import remarkFileTree from "@suzuuuuu09/remark-file-tree";
+import remarkFileTree from "remark-file-tree";
 
 const processor = unified().use(remarkFileTree, {
 	iconThemeMode: "theme",
