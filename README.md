@@ -45,6 +45,12 @@ The plugin outputs generic class-based markup, so you can style it however you w
 </div>
 ```
 
+### Font requirement (Nerd Fonts)
+
+Icons are rendered as Nerd Font glyphs. For correct icon display, use a Nerd Font in your CSS (for example `Symbols Nerd Font Mono`).
+
+If Nerd Fonts are not available in the user's environment, icons may appear as missing-glyph boxes.
+
 Minimal CSS example:
 
 ```css
@@ -56,6 +62,9 @@ Minimal CSS example:
 
 .remark-file-tree__icon-glyph {
 	color: var(--tree-icon-light);
+	font-family:
+		"Symbols Nerd Font Mono", "JetBrainsMono Nerd Font", "Hack Nerd Font",
+		monospace;
 }
 
 @media (prefers-color-scheme: dark) {
