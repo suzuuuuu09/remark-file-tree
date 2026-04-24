@@ -10,7 +10,6 @@ export const FILE_TREE_DEFAULT_ICONS = {
 	file: { text: "", lightColor: "#000000", darkColor: "#ffffff" },
 } as const satisfies Record<"folder" | "folderOpen" | "file", FileTreeIcon>;
 
-// FILE_DIRECTORY_ICONS.md から抽出した全nameアイコン（重複はキー単位で統合）
 // 同一nameが複数回出現する場合は first=lightColor, last=darkColor として保持
 export const FILE_TREE_ALL_ICONS: Record<string, FileTreeIcon> = {
 	_gvimrc: { text: "", lightColor: "#017226", darkColor: "#019833" },
