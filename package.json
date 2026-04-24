@@ -1,0 +1,59 @@
+{
+	"name": "@suzu09/remark-file-tree",
+	"version": "0.1.0",
+	"description": "A remark plugin to render file tree code blocks as styled HTML",
+	"type": "module",
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"check": "biome check .",
+		"check:write": "biome check --write .",
+		"lint": "biome lint .",
+		"lint:fix": "biome lint --write .",
+		"format": "biome format .",
+		"format:write": "biome format --write .",
+		"build": "tsup src/index.ts --format esm,cjs --dts",
+		"dev": "tsup src/index.ts --format esm,cjs --dts --watch",
+		"prepublishOnly": "pnpm run build",
+		"test": "pnpm run build && node --test \"test/**/*.test.mjs\""
+	},
+	"keywords": [
+		"remark",
+		"unified",
+		"plugin",
+		"file-tree",
+		"markdown",
+		"mdast"
+	],
+	"author": "suzuuuuu09",
+	"license": "ISC",
+	"packageManager": "pnpm@10.33.0",
+	"peerDependencies": {
+		"unified": ">=10",
+		"unist-util-visit": ">=4"
+	},
+	"devDependencies": {
+		"@types/mdast": "^4.0.0",
+		"tsup": "^8.0.0",
+		"typescript": "^5.0.0",
+		"unified": "^11.0.0",
+		"@biomejs/biome": "^2.4.13",
+		"unist-util-visit": "^5.0.0"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"esbuild"
+		]
+	}
+}
