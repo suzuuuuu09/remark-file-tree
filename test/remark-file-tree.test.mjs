@@ -95,3 +95,29 @@ test("keeps nested directories under their parent depth", () => {
 		/java\/[\s\S]*?data-depth="2" style="--tree-depth:2;"[\s\S]*?Main\.java/,
 	);
 });
+
+test("parses ASCII tree prefixes as nested depth", () => {
+	const tree = createTree(`src/
+|-- typst/
+|   \`-- main.typ
+\`-- java/
+    \`-- HelloWorld.java`);
+	const transformedNode = transformAndReadHtml(remarkFileTree(), tree);
+
+	assert.match(
+		transformedNode.value,
+		/data-depth="1" style="--tree-depth:1;"[\s\S]*?typst\//,
+	);
+	assert.match(
+		transformedNode.value,
+		/typst\/[\s\S]*?data-depth="2" style="--tree-depth:2;"[\s\S]*?main\.typ/,
+	);
+	assert.match(
+		transformedNode.value,
+		/data-depth="1" style="--tree-depth:1;"[\s\S]*?java\//,
+	);
+	assert.match(
+		transformedNode.value,
+		/java\/[\s\S]*?data-depth="2" style="--tree-depth:2;"[\s\S]*?HelloWorld\.java/,
+	);
+});
