@@ -1,4 +1,4 @@
-# @suzu09/remark-file-tree
+# @suzuuuuu09/remark-file-tree
 
 A Remark plugin that transforms `tree` code blocks into icon-enhanced file tree HTML.
 
